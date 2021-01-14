@@ -1,3 +1,7 @@
+# Login
+user: esanchez@gmail.com
+password: 123456
+
 # Mastergym
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
