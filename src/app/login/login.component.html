@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="text-center">
+        <img class="logo" src="assets/logo.png">
+        <h3>Bienvenido, introduce tu usuario</h3>
+    </div>
+    <div class="d-flex justify-content-center">
+        <form [formGroup]="formularioLogin" class="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" formControlName="email" id="email" aria-describedby="emailHelp"
+                    placeholder="Introduce tu email">
+                <div class="form-group text-center" style="margin-top: 10px">
+                    <div *ngIf="formularioLogin.controls['email'].invalid && formularioLogin.controls['email'].dirty"
+                        class="alert alert-danger" role="alert">
+                        <span *ngIf="formularioLogin.controls['email'].errors.required">Correo es requerido</span>
+                        <span *ngIf="formularioLogin.controls['email'].errors.email">Correo inválido</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" (keyUp.enter)="login()" class="form-control" formControlName="password"
+                    id="password" placeholder="Introduce tu contraseña">
+            </div>
+            <div *ngIf="formularioLogin.controls['password'].invalid && formularioLogin.controls['password'].dirty" class="alert alert-danger" role="alert">
+                <span *ngIf="formularioLogin.controls['password'].errors.required">Password is required</span>
+            </div>
+            <button type="submit" [disabled]="!formularioLogin.valid" (click)="login()"
+                class="btn btn-primary">Login</button>
+            <div class="form-group text-center" style="margin-top: 10px">
+                <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">
+                    {{textoError}}
+                </div>
+            </div>
+        </form>
+    </div>
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-clockwise-fade" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+</div>

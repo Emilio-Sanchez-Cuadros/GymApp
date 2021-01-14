@@ -1,0 +1,33 @@
+<div class="container text-center">
+    <h2 class="mt-5 ml-5">¿Se ha comprado Jose la lite?</h2>
+    <div class="container text-center"></div>
+    <h4 *ngIf="votacionNo.length > votacionSi.length && votacionNo.length == 4" style="color: red">No porque es un cagao</h4>
+</div>
+<table class="table table-dark mt-5 container" style="width: 200px">
+    <thead>
+        <tr class="text-center">
+            <th scope="col">Sí</th>
+            <th scope="col">No</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        <tr>
+            <td>{{votacionSi.length}}</td>
+            <td>{{votacionNo.length}}</td>
+        </tr>
+    </tbody>
+</table>
+<h2 class="ml-5">Votación</h2>
+<div class="ml-5 d-flex text-center">
+    <div *ngFor="let i of names.keys()" class="mb-2 ml-2">
+        {{names[i]}}
+        <div>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" *ngIf="votos[i]" [id]="i" disabled class="btn btn-secondary" (click)="votaSi(names[i])">Sí</button>
+                <button type="button" *ngIf="votos[i]" [id]="i" disabled class="btn btn-secondary" (click)="votaNo(names[i])">No</button>
+                <button type="button" *ngIf="!votos[i]" [id]="i" class="btn btn-secondary" (click)="votaSi(names[i])">Sí</button>
+                <button type="button" *ngIf="!votos[i]" [id]="i" class="btn btn-secondary" (click)="votaNo(names[i])">No</button>
+            </div>
+        </div>
+    </div>
+</div>
